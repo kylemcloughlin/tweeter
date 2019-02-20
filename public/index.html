@@ -7,27 +7,53 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+   
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" /> 
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" /> 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
+    
+    
   </head>
 
   <body>
 
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
-      <img class="logo" src="/images/bird.png" width="80px" height="80px">
+      <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
     </nav>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-    </main>
+      <section id="newTweet">
+  <h2>Compose Tweet</h2>
+<!-- <form class="newTweet" action="/tweets/" method="POST" Content-Type="application/x-www-form-urlencoded"> -->
+<textarea id="textarea" class="textfield" name="text" placeholder="What are you humming about?" name="tweet"></textarea>
 
-  </body>
+<input type="submit" value="tweet">
+
+
+<span class="counter">140</span>
+<!-- </form> -->
+</section>
+<article id="tweets"><header>
+  <img class="displayImg" src="/images/dp.png">
+  <p class="name">Kyle Mcloughlin</p>
+ <p class="handle">@bigDaddy</p>
+</header>
+  <p class="tweetBody">I've never seen The Saprono's and im never gonna.</p>
+  <footer>ten days ago</footer></article>
+ </main>
+ <script type="text/javascript" src="/scripts/composer-char-counter.js"></script> 
+ <script type="text/javascript" src="/scripts/app.js"></script> 
+
+</body>
 </html>
+
