@@ -25,3 +25,18 @@
     height: 80px;
     padding-right: 10px;
 }
+
+#nav-bar #composeBut {
+    float: right;
+    margin-top: 1%;
+    width: 22%;
+    height: 81%;
+    border-radius: 12px;
+    font-size: 171%;
+    font-weight: 300;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+#nav-bar #composeBut:hover { opacity: 1
+}

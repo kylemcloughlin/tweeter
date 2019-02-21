@@ -37,3 +37,16 @@ body {
  main > p {
   text-align: -webkit-center;
  }
+.error {
+  background: #ed646712;
+    width: 84%;
+    height: 23%;
+    margin-left: 8%;
+    border-radius: 4px;
+    margin-bottom: 4%;
+    text-align: center;
+    padding-top: 5%;
+    border: 2px solid salmon;
+    font-size: 125%;
+    font-weight: 300;
+  }
