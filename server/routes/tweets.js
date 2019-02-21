@@ -17,7 +17,12 @@ module.exports = function(DataHelpers) {
     });
   });
 
+
+
+
+
   tweetsRoutes.post("/", function(req, res) {
+   console.log("hitting here", req.body.text)
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
@@ -40,7 +45,7 @@ module.exports = function(DataHelpers) {
       }
     });
   });
-
+console.log("hi", tweetsRoutes);
   return tweetsRoutes;
 
 }
