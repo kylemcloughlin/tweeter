@@ -18,7 +18,7 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
-    
+   
     
   </head>
 
@@ -28,31 +28,34 @@
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
+    <button id="composeBut">Compose</button>
     </nav>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <section id="newTweet">
+     <div class="error" id="error1">Cannot submit an empty tweet!!! Try again!</div>
+     <div class="error" id="error2">Exceeded the character count!! Try again!</div> 
+     <section id="newTweet">
   <h2>Compose Tweet</h2>
-<!-- <form class="newTweet" action="/tweets/" method="POST" Content-Type="application/x-www-form-urlencoded"> -->
-<textarea id="textarea" class="textfield" name="text" placeholder="What are you humming about?" name="tweet"></textarea>
+  <form class="newTweet" action="/tweets/" method="POST"
+ Content-Type="application/x-www-form-urlencoded">
+<textarea id="textarea" class="textfield" name="text" 
+placeholder="What are you humming about?" name="tweet">
+</textarea>
 
-<input type="submit" value="tweet">
+<input id="tweetBut" type="submit" value="tweet">
 
 
 <span class="counter">140</span>
-<!-- </form> -->
+</form>
 </section>
-<article id="tweets"><header>
-  <img class="displayImg" src="/images/dp.png">
-  <p class="name">Kyle Mcloughlin</p>
- <p class="handle">@bigDaddy</p>
-</header>
-  <p class="tweetBody">I've never seen The Saprono's and im never gonna.</p>
-  <footer>ten days ago</footer></article>
- </main>
+
+<section id="tweets">
+  
+</section> 
+</main>
  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script> 
- <script type="text/javascript" src="/scripts/app.js"></script> 
+ <!-- <script type="text/javascript" src="/scripts/app.js"></script>  -->
 
 </body>
 </html>

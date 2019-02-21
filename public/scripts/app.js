@@ -4,45 +4,210 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function() {
+$(document).ready(function () {
     console.log("document ready")
-    $("input").on('click', function() {
-     
-        $(".name").append(`${tweetData.user.name}`);
-        $("img").append(`${tweetData.user.avatars.small}`);
-        $(".handle").append(`${tweetData.user.handle}`);
-        $(".tweetBody").append(`${tweetData.content.text}`);
-  
-  
-    //  var $tweet = $("<article>").addClass("tweet");
-    // $()
-    
+    allTweets(data, tweetRenderer)
+    $(".newTweet").submit(function (event) {
+        // alert( "Handler for .submit() called." );
+        event.preventDefault();
+        let $output = $(this).serialize();
 
-    
-    //  console.log($tweet);
-        })
+        $.ajax({
+            type: 'POST',
+            url: '/tweets/',
+            data: $output,
+            success: function (data) {
+                console.log("success!! !", data);
+
+                $.ajax('/tweets/')
+                    .done((response) => {
+                        console.log(response)
+                        allTweets(response, tweetRenderer);
+                    })
+                    .fail(() => {
+                        console.log('The call failed')
+                    })
+
+
+
+
+            }
+        });
+
+
+
+    })
 
 
 });
 
-// $("input").on('click', function() {
-//     var $tweet = $("<article>").addClass("tweet");
-//     console.log("tweet");
-//     })
 
 
-    const tweetData = {
+
+$("input").on("click", function (event) {
+    event.preventDefault();
+    console.log(event);
+
+})
+const data = [{
         "user": {
-          "name": "dave",
-          "avatars": {
-            "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-            "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-            "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-          },
-          "handle": "@liveofromdave"
+            "name": "Newton",
+            "avatars": {
+                "small": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+                "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+                "large": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+            },
+            "handle": "@SirIsaac"
         },
         "content": {
-          "text": "hate is a strong word to use for socks."
+            "text": "If I have seen further it is by standing on the shoulders of giants"
         },
         "created_at": 1461116232227
-      }
+    },
+    {
+        "user": {
+            "name": "Descartes",
+            "avatars": {
+                "small": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+                "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+                "large": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+            },
+            "handle": "@rd"
+        },
+        "content": {
+            "text": "Je pense , donc je suis"
+        },
+        "created_at": 1461113959088
+    },
+    {
+        "user": {
+            "name": "Johann von Goethe",
+            "avatars": {
+                "small": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+                "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+                "large": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+            },
+            "handle": "@johann49"
+        },
+        "content": {
+            "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+        },
+        "created_at": 1461113796368
+    }
+];
+
+function tweetRenderer(data) {
+
+
+    let userName = $("<p></p>").text(`${data.user.name}`).addClass("name");
+    let handle = $("<p></p>").text(`${data.user.handle}`).addClass("handle")
+
+    let dp = $("<img>").attr("src", `${data.user.avatars.small}`).addClass("displayImg")
+    let header = $("<header></header>").append(dp, userName, handle).addClass("tweetHeader")
+
+    let tweetBody = $("<p></p>").text(`${data.content.text}`).addClass("tweetBody");
+
+    let footer = $("<footer></footer>").text(`${data.created_at}`)
+
+    let article = $("<article></article").append(header, tweetBody, footer).addClass("tweet")
+
+    return article.html();
+
+}
+
+function allTweets(data, callback) {
+    $('#tweets').empty();
+    for (var i = data.length - 1; i > 0; i--) {
+        var $tweet = $("<article></article>").append(callback(data[i])).addClass("tweet")
+
+
+
+        $($tweet).appendTo('#tweets')
+
+        // $('#tweets').empty();
+    }
+    // $('#tweets').empty();
+
+}
+
+$(document).ready(function validation() {
+    $('#error1').toggle();
+    $('#error2').toggle();
+    $('#tweetBut').click(function () {
+            let x;
+            x = document.getElementById("textarea").value;
+            if (x === "" || x === null) {
+                $('#error1').slideDown();
+                setTimeout(function () {
+                    $('#error1').slideUp();
+                }, 5000);
+
+                event.preventDefault();
+                return false;
+            }
+
+            if (x.length > 140) {
+                $('#error2').slideDown();
+                setTimeout(function () {
+                    $('#error2').slideUp();
+                }, 5000);
+
+                event.preventDefault();
+                return false;
+            
+
+            event.preventDefault();
+            return false;
+        }
+    })
+
+})
+
+
+$(document).ready(function () {
+    $("#newTweet").toggle()
+    $("#composeBut").click(function () {
+        $("#newTweet").slideDown();
+        // .slideDown();
+        var input = document.getElementById('textarea');
+        input.focus();
+        input.select();
+    });
+    $("#tweetBut").click(function () {
+        $("#newTweet").slideUp();
+        // .slideDown();
+
+    });
+
+    // });
+
+
+
+});
+
+// $.ajax('http://localhost:8080/tweets', {
+//         method: 'GET'
+//     })
+//     .then(function (morePostsHtml) {
+//         console.log('Success: ', morePostsHtml);
+
+//     });
+
+// $.ajax('http://localhost:8000/tweets')
+//     .done((response) => {
+//         console.log(response)
+//     })
+//     .fail(() => {
+//         console.err('The call failed')
+//     })
+
+// allTweets(data, tweetRenderer); 
+
+// $.ajax('http://localhost:8000/tweets')
+//             .done((response) => {
+//                 console.log("hit", response)
+//             })
+//             .fail(() => {
+//                 console.err('The call failed')
+//             })
+// loadTweets();
