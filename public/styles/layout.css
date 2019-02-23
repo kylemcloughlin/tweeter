@@ -6,7 +6,10 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -24,7 +27,7 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
- main {
+main {
   padding-top: 140px;
   margin-left: auto;
   margin-right: auto;
@@ -32,21 +35,22 @@ body {
   vertical-align: middle;
   height: inherit;
   background: white;
- }
+}
 
- main > p {
+main>p {
   text-align: -webkit-center;
- }
+}
+
 .error {
   background: #ed646712;
-    width: 84%;
-    height: 23%;
-    margin-left: 8%;
-    border-radius: 4px;
-    margin-bottom: 4%;
-    text-align: center;
-    padding-top: 5%;
-    border: 2px solid salmon;
-    font-size: 125%;
-    font-weight: 300;
-  }
+  width: 84%;
+  height: 23%;
+  margin-left: 8%;
+  border-radius: 4px;
+  margin-bottom: 4%;
+  text-align: center;
+  padding-top: 5%;
+  border: 2px solid salmon;
+  font-size: 125%;
+  font-weight: 300;
+}

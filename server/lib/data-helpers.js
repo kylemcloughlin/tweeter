@@ -9,7 +9,7 @@ const simulateDelay = require("./util/simulate-delay");
 
 //     // Saves a tweet to `db`
 //     saveTweet: function(newTweet, callback) {
-      
+
 //       simulateDelay(() => {
 //         // MongoClient.tweets.push(newTweet);
 //         callback(null, true);
@@ -17,7 +17,7 @@ const simulateDelay = require("./util/simulate-delay");
 //     },
 
 //     // Get all tweets in `db`, sorted by newest first
-    
+
 
 // gi
 
@@ -25,16 +25,16 @@ module.exports = function makeDataHelpers(db) {
   return {
 
     // Saves a tweet to `db`
-    saveTweet: function(newTweet, callback) {
+    saveTweet: function (newTweet, callback) {
       console.log("SAVETWEETDB", db);
       db.collection("tweeter").insert(newTweet);
-        callback(null, true);
-      },
+      callback(null, true);
+    },
 
     // Get all tweets in `db`, sorted by newest first
-    getTweets: function(callback) {
+    getTweets: function (callback) {
       db.collection("tweeter").find().toArray(callback);
-    
+
 
 
 
@@ -61,9 +61,9 @@ module.exports = function makeDataHelpers(db) {
 
 
 
-    
 
-  
+
+
 
 
 
@@ -75,7 +75,7 @@ module.exports = function makeDataHelpers(db) {
 // getTweets: function(callback) {
 //   console.log('DB*******', db);
 //   //here 
- 
+
 //   simulateDelay(() => {
 //     const sortNewestFirst = (a, b) => a.created_at - b.created_at;
 //     // callback(null, MongoClient.tweets.sort(sortNewestFirst));

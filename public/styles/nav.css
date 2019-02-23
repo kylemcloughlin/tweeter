@@ -7,7 +7,6 @@
     padding-left: 2em;
     padding-right: 2em;
     z-index: 99999
-
 }
 
 #nav-bar .header {
@@ -38,5 +37,6 @@
     transition: 0.3s;
 }
 
-#nav-bar #composeBut:hover { opacity: 1
+#nav-bar #composeBut:hover {
+    opacity: 1
 }

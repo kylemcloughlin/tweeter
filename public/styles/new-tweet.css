@@ -1,15 +1,15 @@
 #newTweet {
-       
-    background:#AAA;
-        width: 84%;
-        height: 50%;
-        border-radius: 4px;
-        margin: auto;
-        border: 2px solid gray;
-    }
 
-h2 {  
-      margin-left: 4%;
+    background: #AAA;
+    width: 84%;
+    height: 50%;
+    border-radius: 4px;
+    margin: auto;
+    border: 2px solid gray;
+}
+
+h2 {
+    margin-left: 4%;
     border-bottom: 1px solid;
     margin-right: 6%;
 
@@ -32,10 +32,11 @@ input {
     padding-left: 5px;
     margin-left: 4%;
 }
+
 /* .tweets {
     background: #AAA;
     /* width: 84%; */
-    /* height: 71%;
+/* height: 71%;
     border-radius: 4px;
     margin: auto;
     border: 2px solid gray; */
@@ -62,46 +63,47 @@ input {
     padding-right: 6px;
     padding-top: 4px;
 }
+
 .tweet .name {
     float: left;
     margin-left: 2px;
 }
 
 .tweet .handle {
- 
-color: darkslategray;
-float: right;
+
+    color: darkslategray;
+    float: right;
 }
 
 .tweet footer {
- 
+
     border-top: 1px solid grey;
     height: 0%;
     padding-left: 2%;
-        margin-top: 4px;
-        color: darkslategray;
-        font-weight: 300;
-    }
+    margin-top: 4px;
+    color: darkslategray;
+    font-weight: 300;
+}
 
 
 
 
- .tweet .displayImg { 
-       width: 50px;
+.tweet .displayImg {
+    width: 50px;
     height: 50px;
     border-radius: 20%;
     float: left;
     padding-left: 0%;
     margin-left: 2%;
 }
-   
+
 .tweet .tweetBody {
     height: 25%;
     padding-left: 2%;
 }
 
 
-.tweet:hover { opacity: 1
-    /* transition: 0.3s; */
+.tweet:hover {
+    opacity: 1
+        /* transition: 0.3s; */
 }
-
