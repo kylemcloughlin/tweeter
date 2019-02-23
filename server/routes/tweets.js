@@ -7,12 +7,14 @@ const tweetsRoutes  = express.Router();
 
 module.exports = function(DataHelpers) {
 
+  
+  
   tweetsRoutes.get("/", function(req, res) {
-    DataHelpers.getTweets((err, tweets) => {
+    DataHelpers.getTweets((err, tweeter) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.json(tweets);
+        res.json(tweeter);
       }
     });
   });
@@ -22,7 +24,7 @@ module.exports = function(DataHelpers) {
 
 
   tweetsRoutes.post("/", function(req, res) {
-   console.log("hitting here", req.body.text)
+   console.log("TWEETs.JS REQ.BODY.TEXT", req.body.text)
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
@@ -45,7 +47,7 @@ module.exports = function(DataHelpers) {
       }
     });
   });
-console.log("hi", tweetsRoutes);
+console.log("TWEETROUTES****", tweetsRoutes);
   return tweetsRoutes;
 
 }
