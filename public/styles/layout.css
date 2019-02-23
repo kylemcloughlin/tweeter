@@ -30,7 +30,7 @@ body {
   margin-right: auto;
   width: 450px;
   vertical-align: middle;
-  height: 450px;
+  height: inherit;
   background: white;
  }
 

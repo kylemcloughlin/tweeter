@@ -1,12 +1,26 @@
+// import { db } from "mongodb";
+// const dh = require("./server/lib/data-helpers.js");
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// const db = 
+
+
 $(document).ready(function () {
     console.log("document ready")
-    allTweets(data, tweetRenderer)
+ $.ajax('/tweets/')
+        .done((response) => {
+            console.log('GET RESPONSE', response)
+            allTweets(response, tweetRenderer);
+        })
+        .fail(() => {
+            console.log('The call failed')
+        })
+
+    // allTweets(data, tweetRenderer)
     $(".newTweet").submit(function (event) {
         // alert( "Handler for .submit() called." );
         event.preventDefault();
@@ -21,7 +35,7 @@ $(document).ready(function () {
 
                 $.ajax('/tweets/')
                     .done((response) => {
-                        console.log(response)
+                        console.log('GET RESPONSE', response)
                         allTweets(response, tweetRenderer);
                     })
                     .fail(() => {
@@ -115,10 +129,10 @@ function tweetRenderer(data) {
 
 }
 
-function allTweets(data, callback) {
+function allTweets(dh, callback) {
     $('#tweets').empty();
-    for (var i = data.length - 1; i > 0; i--) {
-        var $tweet = $("<article></article>").append(callback(data[i])).addClass("tweet")
+    for (var i = dh.length - 1; i >= 0; i--) {
+        var $tweet = $("<article></article>").append(callback(dh[i])).addClass("tweet")
 
 
 
@@ -134,27 +148,27 @@ $(document).ready(function validation() {
     $('#error1').toggle();
     $('#error2').toggle();
     $('#tweetBut').click(function () {
-            let x;
-            x = document.getElementById("textarea").value;
-            if (x === "" || x === null) {
-                $('#error1').slideDown();
-                setTimeout(function () {
-                    $('#error1').slideUp();
-                }, 5000);
+        let x;
+        x = document.getElementById("textarea").value;
+        if (x === "" || x === null) {
+            $('#error1').slideDown();
+            setTimeout(function () {
+                $('#error1').slideUp();
+            }, 5000);
 
-                event.preventDefault();
-                return false;
-            }
+            event.preventDefault();
+            return false;
+        }
 
-            if (x.length > 140) {
-                $('#error2').slideDown();
-                setTimeout(function () {
-                    $('#error2').slideUp();
-                }, 5000);
+        if (x.length > 140) {
+            $('#error2').slideDown();
+            setTimeout(function () {
+                $('#error2').slideUp();
+            }, 5000);
 
-                event.preventDefault();
-                return false;
-            
+            event.preventDefault();
+            return false;
+
 
             event.preventDefault();
             return false;
@@ -184,30 +198,3 @@ $(document).ready(function () {
 
 
 });
-
-// $.ajax('http://localhost:8080/tweets', {
-//         method: 'GET'
-//     })
-//     .then(function (morePostsHtml) {
-//         console.log('Success: ', morePostsHtml);
-
-//     });
-
-// $.ajax('http://localhost:8000/tweets')
-//     .done((response) => {
-//         console.log(response)
-//     })
-//     .fail(() => {
-//         console.err('The call failed')
-//     })
-
-// allTweets(data, tweetRenderer); 
-
-// $.ajax('http://localhost:8000/tweets')
-//             .done((response) => {
-//                 console.log("hit", response)
-//             })
-//             .fail(() => {
-//                 console.err('The call failed')
-//             })
-// loadTweets();

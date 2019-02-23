@@ -49,6 +49,8 @@ input {
     margin: auto;
     border: 2px solid gray;
     margin-top: 4px;
+    opacity: 0.6;
+    transition: 0.3s;
 }
 
 .tweet .tweetHeader {
@@ -98,15 +100,8 @@ float: right;
     padding-left: 2%;
 }
 
-article :hover{
-    background-color: aliceblue;
+
+.tweet:hover { opacity: 1
+    /* transition: 0.3s; */
 }
 
-
-
-/* height: 34%;
-padding: 3%;
-color: darkslategray;
-float: right;
-height: inherit;
-padding-bottom: 4%; */

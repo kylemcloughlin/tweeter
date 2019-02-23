@@ -6,7 +6,7 @@
     width: 100%;
     padding-left: 2em;
     padding-right: 2em;
-
+    z-index: 99999
 
 }
 
@@ -29,7 +29,7 @@
 #nav-bar #composeBut {
     float: right;
     margin-top: 1%;
-    width: 22%;
+    width: 12%;
     height: 81%;
     border-radius: 12px;
     font-size: 171%;
