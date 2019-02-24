@@ -26,7 +26,7 @@ module.exports = function (DataHelpers) {
 
 
   tweetsRoutes.post("/", function (req, res) {
-    console.log("TWEETs.JS REQ.BODY.TEXT", req.body.text)
+    console.log("TWEETs.JS REQ.BODY.TEXT", req.body.text);
     if (!req.body.text) {
       res.status(400).json({
         error: 'invalid request: no data in POST body'
@@ -56,4 +56,4 @@ module.exports = function (DataHelpers) {
   console.log("TWEETROUTES****", tweetsRoutes);
   return tweetsRoutes;
 
-}
+};

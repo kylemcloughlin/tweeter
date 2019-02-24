@@ -1,28 +1,24 @@
-// import { db } from "mongodb";
-// const dh = require("./server/lib/data-helpers.js");
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// const db = 
+
 
 
 $(document).ready(function () {
-    console.log("document ready")
+    console.log("document ready");
     $.ajax('/tweets/')
         .done((response) => {
-            console.log('GET RESPONSE', response)
+            console.log('GET RESPONSE', response);
             allTweets(response, tweetRenderer);
         })
         .fail(() => {
-            console.log('The call failed')
-        })
+            console.log('The call failed');
+        });
 
-    // allTweets(data, tweetRenderer)
     $(".newTweet").submit(function (event) {
-        // alert( "Handler for .submit() called." );
         event.preventDefault();
         let $output = $(this).serialize();
 
@@ -35,12 +31,12 @@ $(document).ready(function () {
 
                 $.ajax('/tweets/')
                     .done((response) => {
-                        console.log('GET RESPONSE', response)
+                        console.log('GET RESPONSE', response);
                         allTweets(response, tweetRenderer);
                     })
                     .fail(() => {
-                        console.log('The call failed')
-                    })
+                        console.log('The call failed');
+                    });
 
 
 
@@ -50,7 +46,7 @@ $(document).ready(function () {
 
 
 
-    })
+    });
 
 
 });
@@ -62,23 +58,18 @@ $("input").on("click", function (event) {
     event.preventDefault();
     console.log(event);
 
-})
+});
 
 
 function tweetRenderer(data) {
-
-
-    let userName = $("<p></p>").text(`${data.user.name}`).addClass("name");
-    let handle = $("<p></p>").text(`${data.user.handle}`).addClass("handle")
-
-    let dp = $("<img>").attr("src", `${data.user.avatars.small}`).addClass("displayImg")
-    let header = $("<header></header>").append(dp, userName, handle).addClass("tweetHeader")
-
+   let hoursAgo = Math.round(Date.now() / 1000 / 60 / 60) - Math.round( data.created_at / 1000 / 60 / 60 );
+   let userName = $("<p></p>").text(`${data.user.name}`).addClass("name");
+    let handle = $("<p></p>").text(`${data.user.handle}`).addClass("handle");
+    let dp = $("<img>").attr("src", `${data.user.avatars.small}`).addClass("displayImg");
+    let header = $("<header></header>").append(dp, userName, handle).addClass("tweetHeader");
     let tweetBody = $("<p></p>").text(`${data.content.text}`).addClass("tweetBody");
-
-    let footer = $("<footer></footer>").text(`${data.created_at}`)
-
-    let article = $("<article></article").append(header, tweetBody, footer).addClass("tweet")
+    let footer = $("<footer></footer>").text(`Posted ${hoursAgo} hours ago.`);
+    let article = $("<article></article").append(header, tweetBody, footer).addClass("tweet");
 
     return article.html();
 
@@ -87,15 +78,15 @@ function tweetRenderer(data) {
 function allTweets(dh, callback) {
     $('#tweets').empty();
     for (var i = dh.length - 1; i >= 0; i--) {
-        var $tweet = $("<article></article>").append(callback(dh[i])).addClass("tweet")
+        var $tweet = $("<article></article>").append(callback(dh[i])).addClass("tweet");
 
 
 
-        $($tweet).appendTo('#tweets')
+        $($tweet).appendTo('#tweets');
 
-        // $('#tweets').empty();
+
     }
-    // $('#tweets').empty();
+
 
 }
 
@@ -125,30 +116,28 @@ $(document).ready(function validation() {
             return false;
 
 
-            event.preventDefault();
-            return false;
         }
-    })
+    });
 
-})
+});
 
 
 $(document).ready(function () {
-    $("#newTweet").toggle()
+    $("#newTweet").toggle();
     $("#composeBut").click(function () {
         $("#newTweet").slideDown();
-        // .slideDown();
+
         var input = document.getElementById('textarea');
         input.focus();
         input.select();
     });
     $("#tweetBut").click(function () {
         $("#newTweet").slideUp();
-        // .slideDown();
+
 
     });
 
-    // });
+
 
 
 

@@ -16,7 +16,7 @@ app.use(express.static("public"));
 // const db = require("./lib/in-memory-db");
 const MongoClient = require("mongodb").MongoClient;
 
-const dh = require("./lib/data-helpers.js")
+const dh = require("./lib/data-helpers.js");
 
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
@@ -32,10 +32,10 @@ const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
-    console.log('IT DIED')
+    console.log('IT DIED');
   }
 
-  console.log('IT DIDNT DIE?')
+  console.log('IT DIDNT DIE?');
   console.log(db);
   const DataHelpers = dh(db);
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
@@ -71,4 +71,4 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
 
   });
 
-})
+});
