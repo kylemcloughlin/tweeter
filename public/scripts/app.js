@@ -56,33 +56,32 @@ $(document).ready(function () {
 
 $("input").on("click", function (event) {
     event.preventDefault();
-    console.log(event);
+    console.log("hit", event);
 
 });
 
 
 function tweetRenderer(data) {
-   let hoursAgo = Math.round(Date.now() / 1000 / 60 / 60) - Math.round( data.created_at / 1000 / 60 / 60 );
-   let userName = $("<p></p>").text(`${data.user.name}`).addClass("name");
+    
+    let hoursAgo = Math.round(Date.now() / 1000 / 60 / 60) - Math.round(data.created_at / 1000 / 60 / 60);
+    let userName = $("<p></p>").text(`${data.user.name}`).addClass("name");
     let handle = $("<p></p>").text(`${data.user.handle}`).addClass("handle");
     let dp = $("<img>").attr("src", `${data.user.avatars.small}`).addClass("displayImg");
     let header = $("<header></header>").append(dp, userName, handle).addClass("tweetHeader");
     let tweetBody = $("<p></p>").text(`${data.content.text}`).addClass("tweetBody");
     let footer = $("<footer></footer>").text(`Posted ${hoursAgo} hours ago.`);
     let article = $("<article></article").append(header, tweetBody, footer).addClass("tweet");
-
+   
     return article.html();
 
 }
 
 function allTweets(dh, callback) {
-    $('#tweets').empty();
+    $('.tweet-container').empty();
     for (var i = dh.length - 1; i >= 0; i--) {
         var $tweet = $("<article></article>").append(callback(dh[i])).addClass("tweet");
-
-
-
-        $($tweet).appendTo('#tweets');
+        let $test = $("<article></article>").text('TESTESTESETESET').addClass("tweet");
+        $($tweet).appendTo('.tweet-container').html;
 
 
     }

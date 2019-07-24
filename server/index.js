@@ -20,6 +20,7 @@ const dh = require("./lib/data-helpers.js");
 
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
+// mongodb + srv: //kmcloughlin:<password>@tweeter00-l8zkt.mongodb.net/test?retryWrites=true&w=majority
 
 
 // The `data-helpers` module provides an interface to the database of tweets.
@@ -36,7 +37,7 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   }
 
   console.log('IT DIDNT DIE?');
-  console.log(db);
+  console.log("hit", db);
   const DataHelpers = dh(db);
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 
