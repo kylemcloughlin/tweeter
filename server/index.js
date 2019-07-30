@@ -31,7 +31,7 @@ const mongodb_uri = "mongodb://localhost:27017/tweeter";
 // Because it exports a function that expects the `db` as a parameter, we can
 // require it and pass the `db` parameter immediately:
 
-MongoClient.connect(process.env.MONGODB_URI || mongodb_uri, (err, db) => {
+MongoClient.connect(process.env.DATABASE_URI || mongodb_uri, (err, db) => {
   if (err) {
     console.log('IT DIED');
   }
