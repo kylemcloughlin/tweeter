@@ -2,7 +2,7 @@
 
 // Basic express setup:
 
-const PORT = 8080;
+const port = process.env.PORT || 8080;
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -18,7 +18,7 @@ const MongoClient = require("mongodb").MongoClient;
 
 const dh = require("./lib/data-helpers.js");
 
-const MONGODB_URI = "mongodb://localhost:27017/tweeter";
+const mongodb_uri = "mongodb://localhost:27017/tweeter";
 
 // mongodb + srv: //kmcloughlin:<password>@tweeter00-l8zkt.mongodb.net/test?retryWrites=true&w=majority
 
@@ -31,7 +31,7 @@ const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 // Because it exports a function that expects the `db` as a parameter, we can
 // require it and pass the `db` parameter immediately:
 
-MongoClient.connect(MONGODB_URI, (err, db) => {
+MongoClient.connect(process.env.MONGODB_URI || mongodb_uri, (err, db) => {
   if (err) {
     console.log('IT DIED');
   }
@@ -65,8 +65,8 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   //   res.redirect("/")
   // })
 
-  app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`);
+  app.listen(port, () => {
+    console.log(`listening on port ${port}`);
 
 
 
