@@ -3,7 +3,9 @@
 Tweeter is a simple, single-page Twitter clone.
 
 built to practice HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
-
+## Heroku
+view it on heroku at:
+https://tweeter-deployed.herokuapp.com/
 ## ScreenShots
 ![`Screen shot of tweets`](https://github.com/kylemcloughlin/tweeter/blob/69008ebb7eac0529dc08e255c7403b51e064118a/Docs/tweets.png?raw=true)
 
